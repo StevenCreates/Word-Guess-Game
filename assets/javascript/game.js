@@ -28,24 +28,16 @@ function animalClass (){
     if (randoAnimals === "Penguin"){
         document.getElementById('animal').className = "penguin";
     }
-}
-function animalClass (){
-    if (randoAnimals === "Sabertooth"){
+    else if (randoAnimals === "Sabertooth"){
         document.getElementById('animal').className = "sabertooth";
     } 
-}
-function animalClass (){
-    if (randoAnimals === "Zebra"){
+    else if (randoAnimals === "Zebra"){
         document.getElementById('animal').className = "zebra";
     }
-}
-function animalClass (){
-    if (randoAnimals === "Octopus"){
+    else if (randoAnimals === "Octopus"){
         document.getElementById('animal').className = "octopus";
     }
-}
-function animalClass (){
-    if (randoAnimals === "Elephant"){
+    else if (randoAnimals === "Elephant"){
         document.getElementById('animal').className = "elephant";
     }
 }
