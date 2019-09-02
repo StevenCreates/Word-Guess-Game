@@ -17,15 +17,42 @@ randoAnimals = document.getElementById('animal')
         "Elephant"
     ];
 
-// Declaring letters
-pressedLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 
 // Creating Random Animal Generator
 randoAnimals = Animals[Math.floor(Math.random() * Animals.length)];
 console.log(randoAnimals);
+
+
 // Change image background and style based off of randoAnimals
+function animalClass (){
+    if (randoAnimals === "Penguin"){
+        document.getElementById('animal').className = "penguin";
+    }
+}
+function animalClass (){
+    if (randoAnimals === "Sabertooth"){
+        document.getElementById('animal').className = "sabertooth";
+    } 
+}
+function animalClass (){
+    if (randoAnimals === "Zebra"){
+        document.getElementById('animal').className = "zebra";
+    }
+}
+function animalClass (){
+    if (randoAnimals === "Octopus"){
+        document.getElementById('animal').className = "octopus";
+    }
+}
+function animalClass (){
+    if (randoAnimals === "Elephant"){
+        document.getElementById('animal').className = "elephant";
+    }
+}
+animalClass()
 
-
+// Declaring letters
+pressedLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
 
 // Creating clicking function to capture users guesses
 
