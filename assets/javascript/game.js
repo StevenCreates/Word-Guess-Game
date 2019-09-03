@@ -2,69 +2,106 @@
 
 window.onload = function () {
 
-// Adding ID's to apply to html
+// Declaring Random 8bit vidoe game character Guesses
+var wordsList = ["mario", "pacman", "donkeykong", "yoshi", "link"];
 
-playerGuessed = document.getElementById('user-guess');
-randoAnimals = document.getElementById('animal')
+// Declaring variables for game
+var randomWord = "";
+var lettersInChosenWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
+var letterGuessed = "";
+var winCounter = 0;
+var lossCounter = 0;
+var numGuesses = 9;
+
+// Creating Game
+
+function startGame() {
+  numGuesses = 9;
+  randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+  lettersInChosenWord = randomWord.split("");
+  numBlanks = lettersInChosenWord.length;
+  console.log(randomWord);
+  blanksAndSuccesses = [];
+  wrongGuesses = [];
+
+// This is based on number of letters in solution.
+  for (var i = 0; i < numBlanks; i++) {
+    blanksAndSuccesses.push("_");
+  }
+  console.log(blanksAndSuccesses);
 
 
-// Declaring Animal Guesses
-    var Animals = [
-        "Penguin",
-        "Sabertooth",
-        "Zebra",
-        "Octopus",
-        "Elephant"
-    ];
-
-
-// Creating Random Animal Generator
-randoAnimals = Animals[Math.floor(Math.random() * Animals.length)];
-console.log(randoAnimals);
-
-
-// Change image background and style based off of randoAnimals
-function animalClass (){
-    if (randoAnimals === "Penguin"){
-        document.getElementById('animal').className = "penguin";
-    }
-    else if (randoAnimals === "Sabertooth"){
-        document.getElementById('animal').className = "sabertooth";
-    } 
-    else if (randoAnimals === "Zebra"){
-        document.getElementById('animal').className = "zebra";
-    }
-    else if (randoAnimals === "Octopus"){
-        document.getElementById('animal').className = "octopus";
-    }
-    else if (randoAnimals === "Elephant"){
-        document.getElementById('animal').className = "elephant";
-    }
+// This updates guesses
+  document.getElementById("guesses-left").innerHTML = numGuesses;
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+  document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 }
-animalClass()
 
-// Declaring letters
-pressedLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
-
-// Creating clicking function to capture users guesses
-
-    document.onkeyup = function(event) {
-        var playerGuessed = event.key;
-        playerGuessed.toLowerCase();
-        console.log(playerGuessed);
+// Doing comparison matches
+function checkLetters(letter) {
+  var letterInWord = false;
+  for (var i = 0; i < numBlanks; i++) {
+    if (randomWord[i] === letter) {
+      letterInWord = true;
     }
+  }
 
-// Putting User Guess into correct or guessed
+  if (letterInWord) {
+    for (var j = 0; j < numBlanks; j++) {
+      if (randomWord[j] === letter) {
+        blanksAndSuccesses[j] = letter;
+      }
+    }
+    console.log(blanksAndSuccesses);
+  }
+// doing wrong letter guess logic
+  else {
+    wrongGuesses.push(letter);
+    numGuesses--;
+
+  }
+
+}
+
+// Code thats needed finish the round
+function roundComplete() {
+
+  console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
+
+  document.getElementById("guesses-left").innerHTML = numGuesses;
+
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+
+  document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+
+  if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
+    winCounter++;
+    alert("You win!");
+    document.getElementById("win-counter").innerHTML = winCounter;
+    startGame();
+  }
+
+  else if (numGuesses === 0) {
+    lossCounter++;
+    alert("You lose");
+    document.getElementById("loss-counter").innerHTML = lossCounter;
+    startGame();
+  }
+
+}
+
+startGame();
+
+document.onkeyup = function(event) {
+
+  letterGuessed = String.fromCharCode(event.which).toLowerCase();
+
+  checkLetters(letterGuessed);
+  roundComplete();
+};
 
 
-
-// Alert win or lose
-
-// Keeping Track of Wins or Losses
-
-    
-
-
-
-// Closing onload } to help me remember where the bottom is
 }
