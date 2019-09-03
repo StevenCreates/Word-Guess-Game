@@ -80,14 +80,14 @@ function roundComplete() {
 
   if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
     winCounter++;
-    alert("You win!");
+    alert("You win! " + randomWord);
     document.getElementById("win-counter").innerHTML = winCounter;
     startGame();
   }
 
   else if (numGuesses === 0) {
     lossCounter++;
-    alert("You lose");
+    alert("You lose answer was " + randomWord);
     document.getElementById("loss-counter").innerHTML = lossCounter;
     startGame();
   }
