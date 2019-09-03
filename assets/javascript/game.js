@@ -3,7 +3,8 @@
 window.onload = function () {
 
 // Declaring Random 8bit vidoe game character Guesses
-var wordsList = ["mario", "pacman", "donkeykong", "yoshi", "link", "pikachu", "sonic"];
+var wordsList = 
+["mario", "pacman", "donkeykong", "yoshi", "link", "pikachu", "sonic", "megaman", "mew", "kirby"];
 
 // Declaring variables for game
 var randomWord = "";

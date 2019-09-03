@@ -10,3 +10,8 @@ text-align: center;
 .jumbotron {
     opacity: 0.5;
 }
+
+.smallgif {
+    height: 39px !important;
+    padding-right: 2%;
+}
