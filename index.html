@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <audio autoplay>
+        <source src="./assets/music/smb.mp3" type="audio/mpeg">
+    </audio>
     <div class='container'>
         <div class="row">
             <div class="col-lg-12 center">
@@ -63,11 +66,23 @@
                                 <strong>Losses: </strong> <span id='loss-counter'>0</span>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning">Reset</button>
-
+                        <button type="button" class="btn btn-warning" value="reset" onclick="resetme()">Reset Score</button>
+                        <script>
+                            function resetme() {
+                                document.getElementById('win-counter').innerHTML = "0";
+                                document.getElementById('loss-counter').innerHTML = "0";
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
+</div>
+</div>
+<footer class="footer">
+        <div class="container">
+          <span>Hand Crafted by: Steven Hofheins</span>
+        </div>
+      </footer>
 
             <script src="./assets/javascript/game.js"></script>
 </body>

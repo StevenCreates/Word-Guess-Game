@@ -80,7 +80,7 @@ function roundComplete() {
 
   if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
     winCounter++;
-    alert("You win! " + randomWord);
+    alert("You win! Correct answer " + randomWord);
     document.getElementById("win-counter").innerHTML = winCounter;
     startGame();
   }
@@ -103,5 +103,8 @@ document.onkeyup = function(event) {
   checkLetters(letterGuessed);
   roundComplete();
 };
+
+
+
 
 }
